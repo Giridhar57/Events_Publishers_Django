@@ -1,7 +1,4 @@
 from multiprocessing import context
-from re import template
-from turtle import title
-from unicodedata import category
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
