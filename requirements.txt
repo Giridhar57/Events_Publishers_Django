@@ -9,7 +9,7 @@ charset-normalizer==2.0.12
 click==8.0.3
 cloudinary==1.24.0
 colorama==0.4.4
-crispy-bootstrap5
+crispy-bootstrap5==0.6
 cryptography==36.0.2
 defusedxml==0.6.0
 distlib==0.3.4
