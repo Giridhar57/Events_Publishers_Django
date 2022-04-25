@@ -31,9 +31,9 @@
           <a class="btn btn-secondary" href={{object.register_link}}>Register</a>
           <a href="/" class="btn btn-primary">Back</a>
           {%if is_liked%}
-          <a href="{% url 'favourite_post' object.id%}" class="btn" style="color:red"><i class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
+          <a href="{% url 'favourite_post' object.id%}" class="btn" style="color:red"><img src="https://cdn-icons-png.flaticon.com/128/833/833472.png" alt="" style="width: 40px; height: 40px;"></a>
           {%else%}
-          <a href="{% url 'favourite_post' object.id%}" class="btn" style="color:red"><i class="fa fa-heart-o fa-2x" aria-hidden="true"></i></a>
+          <a href="{% url 'favourite_post' object.id%}" class="btn" style="color:red"><img src="https://cdn-icons.flaticon.com/png/128/2961/premium/2961957.png?token=exp=1650909432~hmac=d9613eb10ca2b55b57583b85936f5b2e" alt="" style="width: 40px; height: 40px;"></a>
           {%endif%}
         {% endif %}
       </div>
