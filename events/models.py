@@ -3,8 +3,13 @@ from distutils.command.upload import upload
 from email.mime import image
 from email.policy import default
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.urls import reverse
+
+class User(AbstractUser):
+    is_user = models.BooleanField(default=False)
+    is_organizer = models.BooleanField(default=False)
+
 
 class Post(models.Model):
     event_name = models.CharField(max_length=100)

@@ -46,11 +46,19 @@
           </li>
           {% if user.is_authenticated and user.is_superuser %}
             <a class="nav-link" href="{% url 'post-create' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Event</a>
+            <a class="nav-link" href="{% url 'my_events' %}"><i class="fa fa-list" aria-hidden="true"></i> My Events</a>
             <a class="nav-link" href="{% url 'users' %}"><i class="fa fa-users" aria-hidden="true"></i> Users</a>
             <a class="nav-link"><i class="fa fa-user-secret"></i> Welcome Admin - {{user.username}}</a>
           {% elif user.is_authenticated%}
+          {%if user.is_organizer%}
+            <a class="nav-link" href="{% url 'post-create' %}"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Event</a>
+            <a class="nav-link" href="{% url 'post_favourites' %}"><i class="fa fa-heart" aria-hidden="true"></i> Favourites</a>
+            <a class="nav-link" href="{% url 'my_events' %}"><i class="fa fa-list" aria-hidden="true"></i> My Events</a>
+            <a class="nav-link"><i class="fa fa-user"> Welcome Organizer - {{user.username}}</i></a>
+          {%else%}
             <a class="nav-link" href="{% url 'post_favourites' %}"><i class="fa fa-heart" aria-hidden="true"></i> Favourites</a>
             <a class="nav-link"><i class="fa fa-user"> Welcome - {{user.username}}</i></a>
+          {%endif%}
           {%endif%}
         </ul>
         <div>
@@ -58,8 +66,25 @@
             <a class="btn btn-outline-success" href="/logout">Logout</a>
 
           {% else %}
-            <a href="{% url 'register' %}" class="btn btn-outline-success">Register</a>
-            <a href="{% url 'login' %}" class="btn btn-outline-success">Login</a>
+              <div class="btn-group">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Login
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="{% url 'login' %}">User</a></li>
+                  <li><a class="dropdown-item" href="{% url 'login_organizer' %}">Organizer</a></li>
+                  <li><a class="dropdown-item" href="{% url 'login_admin' %}">Admin</a></li>
+                </ul>
+              </div>
+              <div class="btn-group">
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Register
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="{% url 'register' %}">User</a></li>
+                  <li><a class="dropdown-item" href="{% url 'register_organizer' %}">Organizer</a></li>
+                </ul>
+              </div>
 
           {% endif %}
         </div>
